@@ -1,0 +1,10 @@
+{
+  "env": {
+    "jest": true
+  },
+  "plugins": ["simple-import-sort"],
+  "extends": ["next", "next/core-web-vitals"],
+  "rules": {
+    "simple-import-sort/imports": "error"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "liveServer.settings.port": 5501,
+  "eslint.alwaysShowStatus": true,
+  "editor.formatOnSave": true, // Tell VSCode to format files on save
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
