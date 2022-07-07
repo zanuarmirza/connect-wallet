@@ -5,7 +5,11 @@ import { NextPage } from 'next';
 
 const IndexPage: NextPage = () => {
   return (
-    <Container>
+    <Container
+      display="flex"
+      direction="column"
+      css={{ height: '100vh', justifyContent: 'center' }}
+    >
       <MetamaskConnector />
     </Container>
   );

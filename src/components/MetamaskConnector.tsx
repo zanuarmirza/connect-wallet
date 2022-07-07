@@ -1,25 +1,25 @@
 import { Button, Container, Text } from '@nextui-org/react';
+import { weiToEth } from 'utils/web3Utils';
 
 import { UseAccount } from './UseAccount';
+import { useBalance } from './useBalance';
 import { useConnect } from './useConnect';
-// TODO
-// Button connect
-// Account Info
-// address
-// balances
+
 export const MetamaskConnector = () => {
-  const { address, balance } = UseAccount();
+  const { address } = UseAccount();
+  const { balance } = useBalance(address);
   const { onClickConnect } = useConnect();
+
   if (address) {
     return (
-      <Container>
+      <Container display="flex" direction="column">
         <Text>{`Address: ${address}`}</Text>
-        <Text>{`Balance: ${balance}`}</Text>
+        <Text>Balance: {balance ? `${weiToEth(balance)} eth` : '-'}</Text>
       </Container>
     );
   }
   return (
-    <Container css={{ height: '100vh', justifyContent: 'center' }}>
+    <Container display="flex" justify="center">
       <Button onPress={onClickConnect}>Connect</Button>
     </Container>
   );

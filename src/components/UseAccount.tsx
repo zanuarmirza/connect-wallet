@@ -2,17 +2,53 @@ import { useEffect, useState } from 'react';
 import web3 from 'utils/web3Utils';
 export const UseAccount = () => {
   const [address, setAddress] = useState<string>();
-  const [balance, setBalance] = useState<string>();
-
-  console.log('address', address, balance);
   useEffect(() => {
     // SET address dan set balance ketika instance web3 sudah didapatkan
     if (web3) {
-      getAccount();
+      setAccount();
     }
   }, [web3]);
 
-  const getAccount = async () => {
+  useEffect((): any => {
+    const { ethereum } = window as any;
+
+    if (ethereum && ethereum.on) {
+      const handleConnect = () => {
+        console.log("Handling 'connect' event");
+        setAccount();
+      };
+      const handleChainChanged = (chainId: string | number) => {
+        console.log("Handling 'chainChanged' event with payload", chainId);
+        setAccount();
+      };
+      const handleAccountsChanged = (accounts: string[]) => {
+        console.log("Handling 'accountsChanged' event with payload", accounts);
+        if (accounts.length > 0) {
+          setAccount();
+        }
+      };
+      const handleNetworkChanged = (networkId: string | number) => {
+        console.log("Handling 'networkChanged' event with payload", networkId);
+        setAccount();
+      };
+
+      ethereum.on('connect', handleConnect);
+      ethereum.on('chainChanged', handleChainChanged);
+      ethereum.on('accountsChanged', handleAccountsChanged);
+      ethereum.on('networkChanged', handleNetworkChanged);
+
+      return () => {
+        if (ethereum.removeListener) {
+          ethereum.removeListener('connect', handleConnect);
+          ethereum.removeListener('chainChanged', handleChainChanged);
+          ethereum.removeListener('accountsChanged', handleAccountsChanged);
+          ethereum.removeListener('networkChanged', handleNetworkChanged);
+        }
+      };
+    }
+  }, []);
+
+  const setAccount = async () => {
     if (!web3) {
       return undefined;
     }
@@ -23,19 +59,9 @@ export const UseAccount = () => {
     }
     console.log('listAccount', listAccount);
     setAddress(listAccount[0]);
-    getBalance(listAccount[0]);
-  };
-
-  const getBalance = async (address: string) => {
-    if (!web3) {
-      return undefined;
-    }
-    const balance = await web3.eth.getBalance(address);
-    setBalance(balance);
   };
 
   return {
     address,
-    balance,
   };
 };

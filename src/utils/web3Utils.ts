@@ -6,7 +6,7 @@ const web3 =
 
 export const usdcToMWei = (val: string) => Web3.utils.toWei(val, 'mwei');
 export const mweiToUsdc = (val: string) => Web3.utils.fromWei(val, 'mwei');
-
+export const weiToEth = (val: string) => Web3.utils.fromWei(val, 'ether');
 export const getGasPrice = () =>
   config.gasPrice && Web3.utils.toWei(config.gasPrice, 'gwei');
 
