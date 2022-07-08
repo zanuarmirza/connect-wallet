@@ -1,4 +1,4 @@
-import { Button, Container } from '@nextui-org/react';
+import { Button, Container, Text } from '@nextui-org/react';
 
 import { UseAccount } from './UseAccount';
 import { useConnect } from './useConnect';
@@ -12,8 +12,16 @@ export const MetamaskConnector = () => {
   }
 
   return (
-    <Container display="flex" justify="center">
-      <Button color="gradient" onPress={onClickConnect}>
+    <Container
+      display="flex"
+      justify="center"
+      direction="column"
+      alignItems="center"
+    >
+      <Text h1 color="white" size={'10vw'} weight="light">
+        METACOIN
+      </Text>
+      <Button color="gradient" onPress={onClickConnect} css={{ maxW: '300px' }}>
         Connect your wallet
       </Button>
     </Container>

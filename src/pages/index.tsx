@@ -1,21 +1,21 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Container, Text } from '@nextui-org/react';
 import { MetamaskConnector } from 'components/MetamaskConnector';
+import { Profile } from 'components/Profile';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
-import { isMobile } from 'react-device-detect';
 
 const GradientLineLayout = dynamic(() => import('layouts/GradientLineLayout'));
 
 const IndexPage: NextPage = () => {
-  console.log('isMobile', isMobile);
   return (
     <>
       <NextSeo title="MetaCoin" description="not unsual coin" />
       <Container
         display="flex"
         direction="column"
+        justify="center"
         css={{
           height: '100vh',
           width: '100vw',
@@ -24,10 +24,8 @@ const IndexPage: NextPage = () => {
           position: 'relative',
         }}
       >
-        <Text h1 color="white" size={'10vw'} weight="light">
-          METACOIN
-        </Text>
         <MetamaskConnector />
+        <Profile />
       </Container>
       <GradientLineLayout />
     </>
