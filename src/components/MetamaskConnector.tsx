@@ -1,26 +1,21 @@
-import { Button, Container, Text } from '@nextui-org/react';
-import { weiToEth } from 'utils/web3Utils';
+import { Button, Container } from '@nextui-org/react';
 
 import { UseAccount } from './UseAccount';
-import { useBalance } from './useBalance';
 import { useConnect } from './useConnect';
 
 export const MetamaskConnector = () => {
-  const { address } = UseAccount();
-  const { balance } = useBalance(address);
+  const { address, hasChecked } = UseAccount();
   const { onClickConnect } = useConnect();
 
-  if (address) {
-    return (
-      <Container display="flex" direction="column">
-        <Text>{`Address: ${address}`}</Text>
-        <Text>Balance: {balance ? `${weiToEth(balance)} eth` : '-'}</Text>
-      </Container>
-    );
+  if (!hasChecked || address) {
+    return null;
   }
+
   return (
     <Container display="flex" justify="center">
-      <Button onPress={onClickConnect}>Connect</Button>
+      <Button color="gradient" onPress={onClickConnect}>
+        Connect your wallet
+      </Button>
     </Container>
   );
 };

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import web3 from 'utils/web3Utils';
 export const UseAccount = () => {
+  const [hasChecked, sethasChecked] = useState<boolean>(false);
   const [address, setAddress] = useState<string>();
   useEffect(() => {
     // SET address dan set balance ketika instance web3 sudah didapatkan
@@ -23,9 +24,7 @@ export const UseAccount = () => {
       };
       const handleAccountsChanged = (accounts: string[]) => {
         console.log("Handling 'accountsChanged' event with payload", accounts);
-        if (accounts.length > 0) {
-          setAccount();
-        }
+        setAccount();
       };
       const handleNetworkChanged = (networkId: string | number) => {
         console.log("Handling 'networkChanged' event with payload", networkId);
@@ -49,12 +48,14 @@ export const UseAccount = () => {
   }, []);
 
   const setAccount = async () => {
+    sethasChecked(true);
     if (!web3) {
       return undefined;
     }
     const listAccount = await web3.eth.getAccounts();
 
     if (!listAccount.length) {
+      setAddress(undefined);
       return undefined;
     }
     console.log('listAccount', listAccount);
@@ -63,5 +64,6 @@ export const UseAccount = () => {
 
   return {
     address,
+    hasChecked,
   };
 };

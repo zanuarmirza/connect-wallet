@@ -23,6 +23,12 @@ export default class Document extends NextDocument {
         <Head>
           <meta charSet="UTF-8" />
           <meta content="ie=edge" httpEquiv="X-UA-Compatible" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Alatsi&display=swap"
+            rel="stylesheet"
+          ></link>
           {CssBaseline.flush()}
         </Head>
         <body>

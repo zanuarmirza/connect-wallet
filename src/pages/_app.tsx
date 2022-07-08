@@ -1,8 +1,14 @@
 import { NextUIProvider } from '@nextui-org/react';
+import { globalCss } from '@nextui-org/react';
 import type { AppProps } from 'next/app';
 import NextNprogress from 'nextjs-progressbar';
 
+const globalStyles = globalCss({
+  body: { fontFamily: `Alatsi, sans-serif` },
+});
+
 function MyApp({ Component, pageProps }: AppProps) {
+  globalStyles();
   return (
     <NextUIProvider>
       <NextNprogress
