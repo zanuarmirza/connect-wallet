@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useAtom } from 'jotai';
+import { addressAtom, hasCheckAtom } from 'pages/_app';
+import { useEffect } from 'react';
 import web3 from 'utils/web3Utils';
-export const UseAccount = () => {
-  const [hasChecked, sethasChecked] = useState<boolean>(false);
-  const [address, setAddress] = useState<string>();
+export const UseConnectAccount = () => {
+  const [hasChecked, sethasChecked] = useAtom(hasCheckAtom);
+  const [address, setAddress] = useAtom(addressAtom);
+
   useEffect(() => {
     // SET address dan set balance ketika instance web3 sudah didapatkan
     if (web3) {

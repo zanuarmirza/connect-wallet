@@ -1,12 +1,18 @@
 import { Container, Text } from '@nextui-org/react';
+import { useAtom } from 'jotai';
 import Image from 'next/image';
+import { addressAtom } from 'pages/_app';
 import { getAvatar } from 'utils/avatar';
 
-import { UseAccount } from './UseAccount';
 // use blockies to generate avatar
 // show address
+
+// TODO
+// show USDT balance
+// transfer USDT
+// approval USDT
 export const Profile = () => {
-  const { address } = UseAccount();
+  const [address] = useAtom(addressAtom);
   if (!address) {
     return null;
   }

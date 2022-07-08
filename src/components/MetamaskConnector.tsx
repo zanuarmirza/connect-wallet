@@ -1,13 +1,16 @@
 import { Button, Container, Text } from '@nextui-org/react';
+import { useAtom } from 'jotai';
+import { addressAtom, hasCheckAtom } from 'pages/_app';
 
-import { UseAccount } from './UseAccount';
 import { useConnect } from './useConnect';
 
 export const MetamaskConnector = () => {
-  const { address, hasChecked } = UseAccount();
+  const [address] = useAtom(addressAtom);
+  const [hashCheck] = useAtom(hasCheckAtom);
   const { onClickConnect } = useConnect();
 
-  if (!hasChecked || address) {
+  // TODO hasCheck flag
+  if (!hashCheck || address) {
     return null;
   }
 
