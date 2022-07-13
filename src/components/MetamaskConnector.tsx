@@ -2,7 +2,7 @@ import { Button, Container, Text } from '@nextui-org/react';
 import { useAtom } from 'jotai';
 import { addressAtom, hasCheckAtom } from 'pages/_app';
 
-import { useConnect } from './useConnect';
+import { useConnect } from '../module/Account/useConnect';
 
 export const MetamaskConnector = () => {
   const [address] = useAtom(addressAtom);

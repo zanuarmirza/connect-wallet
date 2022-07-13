@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Container } from '@nextui-org/react';
 import { MetamaskConnector } from 'components/MetamaskConnector';
-import { Profile } from 'components/Profile';
-import { USDTBalance } from 'components/USDTBalance';
+import { Profile } from 'module/Account/Profile';
+import { USDTBalance } from 'module/ERC20/components/USDTBalance';
+import { NFTMint } from 'module/ERC721/components/NFTMint';
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
@@ -28,6 +29,7 @@ const IndexPage: NextPage = () => {
         <MetamaskConnector />
         <Profile />
         <USDTBalance />
+        <NFTMint />
       </Container>
       <GradientLineLayout />
     </>

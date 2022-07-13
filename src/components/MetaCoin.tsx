@@ -1,2 +1,0 @@
-//Send
-//Show balance

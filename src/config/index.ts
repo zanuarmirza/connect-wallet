@@ -5,4 +5,5 @@ export default {
   apiURL: process.env.NEXT_PUBLIC_API_URL || '',
   gasPrice: process.env.NEXT_PUBLIC_GAS_PRICE || undefined,
   USDTAddres: process.env.NEXT_PUBLIC_USDT_ADDRESS || undefined,
+  NFTMintAddres: process.env.NEXT_PUBLIC_NFTMINTING_ADDRESS || undefined,
 };
