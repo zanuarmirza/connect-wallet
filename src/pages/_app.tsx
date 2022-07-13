@@ -1,7 +1,7 @@
 import { NextUIProvider } from '@nextui-org/react';
 import { globalCss } from '@nextui-org/react';
-import { UseConnectAccount } from 'components/UseConnectAccount';
 import { atom } from 'jotai';
+import { UseConnectAccount } from 'module/Account/UseConnectAccount';
 import type { AppProps } from 'next/app';
 import NextNprogress from 'nextjs-progressbar';
 

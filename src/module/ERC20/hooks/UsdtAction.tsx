@@ -24,8 +24,10 @@ export const useUsdtAction = () => {
   }, [address, UsdtSC]);
 
   useEffect(() => {
-    getUSDTBalance();
-  }, [UsdtSC, getUSDTBalance]);
+    if (address) {
+      getUSDTBalance();
+    }
+  }, [UsdtSC, getUSDTBalance, address]);
 
   return {
     balance,

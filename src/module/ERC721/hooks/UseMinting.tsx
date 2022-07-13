@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Web3 from 'utils/web3Utils';
 import { ContractSendMethod } from 'web3-eth-contract';
 
-const USDTContractABI = require('contracts/USDT.json');
+const NFTMINTContractABI = require('contracts/NFTMint.json');
 
 export const useMinting = () => {
   const [address] = useAtom(addressAtom);
@@ -14,7 +14,7 @@ export const useMinting = () => {
   >(undefined);
   const [error, setError] = useState<string | undefined>(undefined);
   const NFTMintSC = Web3
-    ? new Web3.eth.Contract(USDTContractABI, config.NFTMintAddres)
+    ? new Web3.eth.Contract(NFTMINTContractABI, config.NFTMintAddress)
     : undefined;
 
   const mint = async () => {

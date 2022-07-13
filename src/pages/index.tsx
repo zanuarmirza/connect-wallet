@@ -18,6 +18,7 @@ const IndexPage: NextPage = () => {
         display="flex"
         direction="column"
         justify="center"
+        alignItems='center'
         css={{
           height: '100vh',
           width: '100vw',
