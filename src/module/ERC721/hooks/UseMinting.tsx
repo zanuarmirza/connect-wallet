@@ -2,6 +2,7 @@ import config from 'config';
 import { useAtom } from 'jotai';
 import { addressAtom } from 'pages/_app';
 import { useState } from 'react';
+import web3 from 'utils/web3Utils';
 import Web3 from 'utils/web3Utils';
 import { ContractSendMethod } from 'web3-eth-contract';
 
@@ -25,6 +26,7 @@ export const useMinting = () => {
       setState('minting');
       await mintMethod.send({
         from: address,
+        gasPrice: web3?.utils.toWei('33', 'Gwei'),
       });
       setState('finish');
     } catch (err: any) {
