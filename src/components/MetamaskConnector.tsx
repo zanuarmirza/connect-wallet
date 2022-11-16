@@ -21,8 +21,8 @@ export const MetamaskConnector = () => {
       direction="column"
       alignItems="center"
     >
-      <Text h1 color="white" size={'10vw'} weight="light">
-        METACOIN
+      <Text h1 color="white" size={'10vw'} weight="bold">
+        NEST NFT
       </Text>
       <Button color="gradient" onPress={onClickConnect} css={{ maxW: '300px' }}>
         Connect your wallet
